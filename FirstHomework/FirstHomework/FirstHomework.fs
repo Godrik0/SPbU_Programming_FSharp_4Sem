@@ -35,9 +35,9 @@ let arrayOfDegrees n m =
     support (n + m) [ pown 2 (n + m) ]
 
 let findFirst ls n =
-    let rec support ls n i =
-        if List.head ls = n then i
-        else if List.length ls = 1 then -1
-        else support (List.tail ls) (n) (i + 1)
+    let rec findFirstRec ls n i =
+        if List.head ls = n then Some(i)
+        else if List.length ls = 1 then None
+        else findFirstRec (List.tail ls) (n) (i + 1)
 
-    support ls n 0
+    findFirstRec ls n 0
